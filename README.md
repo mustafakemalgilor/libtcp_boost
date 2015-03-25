@@ -1,5 +1,5 @@
 # libtcp_boost
-An easy to use &amp; light-weight wrapper for boost::asio library.
+An easy to use &amp; light-weight TCP server wrapper for boost::asio network library.
 
 # Usage
 
