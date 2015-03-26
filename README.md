@@ -31,7 +31,7 @@ Both client and server is running on the same machine.
 
 Test 1 -) The memory stress test
 
-Test terms : 5 minute(s) runtime, 2500 sessions with 50 milliseconds packet interval and 16k message chunk size on client side.
+ - Test terms : 5 minute(s) runtime, 2500 sessions with 50 milliseconds packet interval and 16k message chunk size on client side.
 
 Results
 	Initial Memory Usage(idle) : 1.1 megabyte(s)
