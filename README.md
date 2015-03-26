@@ -29,7 +29,7 @@ Step 5 : You're done. Enjoy using it!
 Test platform : Intel Core i7-4710HQ, 2.5 GHz Processor, 16 gigabytes of ram(1600mhz), 1 TB SSD(540R,520W)
 Both client and server is running on the same machine.
 
-Test 1 -) The memory stress test
+- The memory stress test
 
  - Test terms : 5 minute(s) runtime, 2500 sessions with 50 milliseconds packet interval and 16k message chunk size on client side.
 
