@@ -2,7 +2,7 @@
 /*
 	A template inherited class.
 */
-#include "Session.hpp"
+#include "../../Headers/Session.hpp"
 #include <boost/asio/io_service.hpp>
 
 class DefaultSession : public Session, public boost::enable_shared_from_this<DefaultSession>

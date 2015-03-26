@@ -1,84 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CircularBuffer.cpp">
+    <ClCompile Include="Code\CircularBuffer.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="IOServicePool.cpp">
+    <ClCompile Include="Code\IOServicePool.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Code\main.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="Code\Session.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="Session.cpp">
+    <ClCompile Include="Code\stdafx.cpp">
       <Filter>Code</Filter>
     </ClCompile>
-    <ClCompile Include="DefaultSession.cpp">
-      <Filter>Examples</Filter>
+    <ClCompile Include="Examples\Generic Session\DefaultSession.cpp">
+      <Filter>Examples\Generic Session</Filter>
     </ClCompile>
-    <ClCompile Include="KOSession.cpp">
-      <Filter>Knight OnLine</Filter>
+    <ClCompile Include="Examples\Knight Online Session\crc32.cpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClCompile>
-    <ClCompile Include="JvCryption.cpp">
-      <Filter>Knight OnLine</Filter>
+    <ClCompile Include="Examples\Knight Online Session\JvCryption.cpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClCompile>
-    <ClCompile Include="crc32.cpp">
-      <Filter>Knight OnLine</Filter>
+    <ClCompile Include="Examples\Knight Online Session\KOSession.cpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClCompile>
-    <ClCompile Include="MemUsage.cpp">
+    <ClCompile Include="Misc\MemUsage.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="Headers\CircularBuffer.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
+    <ClInclude Include="Headers\Define.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="IOServicePool.hpp">
+    <ClInclude Include="Headers\IOServicePool.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="CircularBuffer.hpp">
+    <ClInclude Include="Headers\Server.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Define.hpp">
+    <ClInclude Include="Headers\Server_Configuration.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Server.hpp">
+    <ClInclude Include="Headers\Session.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Session.hpp">
+    <ClInclude Include="Headers\Session_Configuration.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Session_Configuration.hpp">
+    <ClInclude Include="Headers\stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Server_Configuration.hpp">
+    <ClInclude Include="Headers\targetver.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="DefaultSession.h">
-      <Filter>Examples</Filter>
+    <ClInclude Include="Examples\Generic Session\DefaultSession.h">
+      <Filter>Examples\Generic Session</Filter>
     </ClInclude>
-    <ClInclude Include="KOSession.hpp">
-      <Filter>Knight OnLine</Filter>
+    <ClInclude Include="Examples\Knight Online Session\ByteBuffer.hpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClInclude>
-    <ClInclude Include="JvCryption.h">
-      <Filter>Knight OnLine</Filter>
+    <ClInclude Include="Examples\Knight Online Session\crc32.h">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClInclude>
-    <ClInclude Include="crc32.h">
-      <Filter>Knight OnLine</Filter>
+    <ClInclude Include="Examples\Knight Online Session\JvCryption.h">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClInclude>
-    <ClInclude Include="ByteBuffer.hpp">
-      <Filter>Knight OnLine</Filter>
+    <ClInclude Include="Examples\Knight Online Session\KOSession.hpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClInclude>
-    <ClInclude Include="Packet.hpp">
-      <Filter>Knight OnLine</Filter>
+    <ClInclude Include="Examples\Knight Online Session\Packet.hpp">
+      <Filter>Examples\Knight Online Session</Filter>
     </ClInclude>
-    <ClInclude Include="MemUsage.h">
+    <ClInclude Include="Misc\MemUsage.h">
       <Filter>Misc</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,11 +95,14 @@
     <Filter Include="Examples">
       <UniqueIdentifier>{456ee09d-a229-4249-b977-1d19c46df799}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Knight OnLine">
-      <UniqueIdentifier>{939fec0b-e0d9-4729-ad80-05f7961683db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Misc">
       <UniqueIdentifier>{06fa4326-d89c-41cf-be4b-6dc40f495472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\Generic Session">
+      <UniqueIdentifier>{b3ff9792-5153-41ff-8f1b-eadff636a257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\Knight Online Session">
+      <UniqueIdentifier>{ee86b1e3-c20b-4580-b4c5-724dde1082f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

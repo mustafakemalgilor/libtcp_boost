@@ -8,8 +8,8 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 
-#include "stdafx.h"
-#include "IOServicePool.hpp"
+#include "../Headers/stdafx.h"
+#include "../Headers/IOServicePool.hpp"
 #include <stdexcept>
 #include <boost/thread/thread.hpp>
 #include <boost/bind.hpp>

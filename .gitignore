@@ -1,11 +1,11 @@
 *.exe
-libtcp_client/Build/Debug/Win32/libtcp_client_Win32.ilk
+libtcp_client/Build/
+libtcp_client/Debug/
 *.pdb
 *.ilk
 *.tlog
-libtcp_server/libtcp_server/Debug/BoostASIOCP_Server.log
+libtcp_server/libtcp_server/Debug/
 *.obj
-libtcp_server/libtcp_server/Debug/BoostASIOCP_Server.pch.codeanalysis
 *.log
 *.pch
 *.codeanalysisast

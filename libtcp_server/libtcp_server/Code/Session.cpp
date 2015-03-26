@@ -1,6 +1,6 @@
-#include "stdafx.h"
-#include "Session.hpp"
-#include "Server.hpp"
+#include "../Headers/stdafx.h"
+#include "../Headers/Session.hpp"
+#include "../Headers/Server.hpp"
 
 
 

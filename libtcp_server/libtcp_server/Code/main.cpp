@@ -1,11 +1,11 @@
 // BoostASIOCP_Server.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-#include "Server.hpp"
-#include "Session.hpp"
-#include "DefaultSession.h"
-#include "KOSession.hpp"
+#include "../Headers/stdafx.h"
+#include "../Headers/Server.hpp"
+#include "../Headers/Session.hpp"
+#include "../Examples/Generic Session/DefaultSession.h"
+#include "../Examples/Knight Online Session/KOSession.hpp"
 
 int _tmain(int argc, _TCHAR* argv[])
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include "stdafx.h"
-#include "CircularBuffer.hpp"
+#include "../Headers/stdafx.h"
+#include "../Headers/CircularBuffer.hpp"
 #include <stdlib.h>
 #include <cstring>
 

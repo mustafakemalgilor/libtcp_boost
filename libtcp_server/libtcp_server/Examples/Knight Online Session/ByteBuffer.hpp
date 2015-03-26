@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Define.hpp"
+#include "../../Headers/Define.hpp"
 
 class ByteBuffer
 {

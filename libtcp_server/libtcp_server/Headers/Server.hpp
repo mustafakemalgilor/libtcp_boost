@@ -32,7 +32,7 @@ Last rev.	: 14/03/2015
 #include "Server_Configuration.hpp"
 
 #ifdef REPORT_MEMORY_USAGE
-	#include "MemUsage.h"
+	#include "../Misc/MemUsage.h"
 #endif
 
 #include <boost/bind.hpp>

@@ -2,7 +2,7 @@
 /*
 A template inherited class.
 */
-#include "Session.hpp"
+#include "../../Headers/Session.hpp"
 #include "Packet.hpp"
 #include "JvCryption.h"
 #include <boost/asio/io_service.hpp>

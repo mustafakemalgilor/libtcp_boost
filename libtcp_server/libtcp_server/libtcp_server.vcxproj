@@ -115,7 +115,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -175,39 +175,34 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ByteBuffer.hpp" />
-    <ClInclude Include="CircularBuffer.hpp" />
-    <ClInclude Include="crc32.h" />
-    <ClInclude Include="DefaultSession.h" />
-    <ClInclude Include="JvCryption.h" />
-    <ClInclude Include="KOSession.hpp" />
-    <ClInclude Include="MemUsage.h" />
-    <ClInclude Include="Packet.hpp" />
-    <ClInclude Include="Server_Configuration.hpp" />
-    <ClInclude Include="Session_Configuration.hpp" />
-    <ClInclude Include="Define.hpp" />
-    <ClInclude Include="IOServicePool.hpp" />
-    <ClInclude Include="Session.hpp" />
-    <ClInclude Include="Server.hpp" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Examples\Generic Session\DefaultSession.h" />
+    <ClInclude Include="Examples\Knight Online Session\ByteBuffer.hpp" />
+    <ClInclude Include="Examples\Knight Online Session\crc32.h" />
+    <ClInclude Include="Examples\Knight Online Session\JvCryption.h" />
+    <ClInclude Include="Examples\Knight Online Session\KOSession.hpp" />
+    <ClInclude Include="Examples\Knight Online Session\Packet.hpp" />
+    <ClInclude Include="Headers\CircularBuffer.hpp" />
+    <ClInclude Include="Headers\Define.hpp" />
+    <ClInclude Include="Headers\IOServicePool.hpp" />
+    <ClInclude Include="Headers\Server.hpp" />
+    <ClInclude Include="Headers\Server_Configuration.hpp" />
+    <ClInclude Include="Headers\Session.hpp" />
+    <ClInclude Include="Headers\Session_Configuration.hpp" />
+    <ClInclude Include="Headers\stdafx.h" />
+    <ClInclude Include="Headers\targetver.h" />
+    <ClInclude Include="Misc\MemUsage.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CircularBuffer.cpp" />
-    <ClCompile Include="crc32.cpp" />
-    <ClCompile Include="IOServicePool.cpp" />
-    <ClCompile Include="DefaultSession.cpp" />
-    <ClCompile Include="JvCryption.cpp" />
-    <ClCompile Include="KOSession.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MemUsage.cpp" />
-    <ClCompile Include="Session.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="Code\CircularBuffer.cpp" />
+    <ClCompile Include="Code\IOServicePool.cpp" />
+    <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\Session.cpp" />
+    <ClCompile Include="Code\stdafx.cpp" />
+    <ClCompile Include="Examples\Generic Session\DefaultSession.cpp" />
+    <ClCompile Include="Examples\Knight Online Session\crc32.cpp" />
+    <ClCompile Include="Examples\Knight Online Session\JvCryption.cpp" />
+    <ClCompile Include="Examples\Knight Online Session\KOSession.cpp" />
+    <ClCompile Include="Misc\MemUsage.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
