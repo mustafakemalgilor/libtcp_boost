@@ -44,7 +44,7 @@ Test 2 -) The CPU usage test
 
 - Test terms : 5 minute(s) runtime, 2500 sessions with with 50 milliseconds packet interval and 16k message chunk size on client side.
 
-Results
+- Results
 	- Initial CPU Utilization(idle) : %0.0
 	- CPU utilization in runtime between 0:30 and 5:00 : %8.41
 	- After clients disconnected : %0.0
