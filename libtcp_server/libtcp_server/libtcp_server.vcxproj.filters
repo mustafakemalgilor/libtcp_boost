@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CircularBuffer.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="IOServicePool.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Code</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultSession.cpp">
+      <Filter>Examples</Filter>
+    </ClCompile>
+    <ClCompile Include="KOSession.cpp">
+      <Filter>Knight OnLine</Filter>
+    </ClCompile>
+    <ClCompile Include="JvCryption.cpp">
+      <Filter>Knight OnLine</Filter>
+    </ClCompile>
+    <ClCompile Include="crc32.cpp">
+      <Filter>Knight OnLine</Filter>
+    </ClCompile>
+    <ClCompile Include="MemUsage.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IOServicePool.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CircularBuffer.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Session_Configuration.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Server_Configuration.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultSession.h">
+      <Filter>Examples</Filter>
+    </ClInclude>
+    <ClInclude Include="KOSession.hpp">
+      <Filter>Knight OnLine</Filter>
+    </ClInclude>
+    <ClInclude Include="JvCryption.h">
+      <Filter>Knight OnLine</Filter>
+    </ClInclude>
+    <ClInclude Include="crc32.h">
+      <Filter>Knight OnLine</Filter>
+    </ClInclude>
+    <ClInclude Include="ByteBuffer.hpp">
+      <Filter>Knight OnLine</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.hpp">
+      <Filter>Knight OnLine</Filter>
+    </ClInclude>
+    <ClInclude Include="MemUsage.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{1ac553ca-8a09-4ed2-93f0-c32387be98c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Code">
+      <UniqueIdentifier>{10f2ed3f-dec8-4c34-8c92-8835a880a0de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples">
+      <UniqueIdentifier>{456ee09d-a229-4249-b977-1d19c46df799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Knight OnLine">
+      <UniqueIdentifier>{939fec0b-e0d9-4729-ad80-05f7961683db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{06fa4326-d89c-41cf-be4b-6dc40f495472}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
