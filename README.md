@@ -1,5 +1,5 @@
 # libtcp_boost
-An easy to use &amp; light-weight TCP server wrapper for boost::asio network library.
+An easy to use &amp; C++ light-weight TCP server wrapper for boost::asio network library.
 # Prerequistes
 
 The project uses BOOST library. You can obtain the latest release from http://www.boost.org/users/history/
