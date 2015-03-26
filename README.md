@@ -34,18 +34,18 @@ Test 1 -) The memory stress test
  - Test terms : 5 minute(s) runtime, 2500 sessions with 50 milliseconds packet interval and 16k message chunk size on client side.
 
 - Results
-	-Initial Memory Usage(idle) : 1.1 megabyte(s)
-	-Memory usage in runtime between 0:30 and 5:00 : 48.7 megabyte(s)
-	-After clients disconnected: 42.14 mebabytes deallocated.
-	-Memory allocation for each session : 16572 bytes.
-	-Memory allocation for server class : 26470 bytes.
+	- Initial Memory Usage(idle) : 1.1 megabyte(s)
+	- Memory usage in runtime between 0:30 and 5:00 : 48.7 megabyte(s)
+	- After clients disconnected: 42.14 mebabytes deallocated.
+	- Memory allocation for each session : 16572 bytes.
+	- Memory allocation for server class : 26470 bytes.
 
 Test 2 -) The CPU usage test
 
--Test terms : 5 minute(s) runtime, 2500 sessions with with 50 milliseconds packet interval and 16k message chunk size on client side.
+- Test terms : 5 minute(s) runtime, 2500 sessions with with 50 milliseconds packet interval and 16k message chunk size on client side.
 
 Results
-	-Initial CPU Utilization(idle) : %0.0
-	-CPU utilization in runtime between 0:30 and 5:00 : %8.41
-	-After clients disconnected : %0.0
+	- Initial CPU Utilization(idle) : %0.0
+	- CPU utilization in runtime between 0:30 and 5:00 : %8.41
+	- After clients disconnected : %0.0
         
