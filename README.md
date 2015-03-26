@@ -9,9 +9,13 @@ Step 2 : Inherit Session class to your own custom session class.
 
 Step 3 : You need to override the following method(s);
         
-        - OnDataReceived(void *,size_t);
+        - OnDataReceived(void *,size_t); 
+			Invokes whenever data received from the remote endpoint. (void*) is actually (unsigned char *)
+			and contains the received data. size_t is the received data's length.
         - OnConnected();
+			Invokes when the session is successfully connected.
         - OnDisconnected();
+			Invokes immediately the session is disconnected.
         
 Step 4 : Create a Server variable wherever you want to use it.
         
