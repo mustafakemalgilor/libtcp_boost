@@ -40,7 +40,7 @@ Both client and server is running on the same machine.
 	- Memory allocation for each session : 16572 bytes.
 	- Memory allocation for server class : 26470 bytes.
 
-Test 2 -) The CPU usage test
+- The CPU usage test
 
 - Test terms : 5 minute(s) runtime, 2500 sessions with with 50 milliseconds packet interval and 16k message chunk size on client side.
 
