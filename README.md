@@ -26,6 +26,8 @@ Step 4 : Create a Server variable wherever you want to use it.
           
 Step 5 : You're done. Enjoy using it!
 
+Step 6 : For those want more detailed information and documentation, please visit https://github.com/mustify/libtcp_boost/wiki
+
 # Performance Reports
 
 Test platform : Intel Core i7-4710HQ, 2.5 GHz Processor, 16 gigabytes of ram(1600mhz), 1 TB SSD(540R,520W)
