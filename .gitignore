@@ -1,10 +1,10 @@
 *.exe
-libtcp_client/Build/
-libtcp_client/Debug/
+libtcp_client/Build/*.*
+libtcp_client/Debug/*.*
 *.pdb
 *.ilk
 *.tlog
-libtcp_server/libtcp_server/Debug/
+libtcp_server/libtcp_server/Debug/*.*
 *.obj
 *.log
 *.pch
