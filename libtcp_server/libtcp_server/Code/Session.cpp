@@ -32,12 +32,12 @@ void Session::Initialize()
 	m_aulPrevReceiveCount.store(0);
 
 	/* Generate ID for this session */
-	char buf[256];
+	/*char buf[256];
 
 	std::string withoutDots = ReplaceString(remote_, ".", "");
 	sprintf_s(buf, "%s%hu", withoutDots.c_str(), remotep_);
 
-	m_ulSessionID = _atoi64(buf);
+	m_ulSessionID = _atoi64(buf);*/
 
 }
 
