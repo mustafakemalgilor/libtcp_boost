@@ -85,6 +85,8 @@ public:
 		Returns the ID assigned to this session
 	*/
 	unsigned long long GetSessionID() const     { return m_ulSessionID; }
+
+	void SetSessionID(unsigned long long id) { m_ulSessionID = id; }
 	/* 
 		Returns the socket object 
 	*/
