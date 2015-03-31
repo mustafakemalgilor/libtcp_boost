@@ -30,6 +30,7 @@ Last rev.	: 14/03/2015
 #include "Session.hpp"
 #include "IOServicePool.hpp"
 #include "Server_Configuration.hpp"
+#include "../ConcurrentStack.hpp"
 
 #ifdef REPORT_MEMORY_USAGE
 	#include "../Misc/MemUsage.h"
@@ -73,6 +74,17 @@ class Server : boost::noncopyable
 public:
 	typedef std::map<unsigned long long, boost::shared_ptr<T>> SessionMap;
 	typedef std::set<boost::shared_ptr<T>> SessionSet;
+
+	T * operator[] (unsigned long long id)
+	{
+
+		boost::recursive_mutex::scoped_lock lock(sessionArrayLock);
+		auto itr = arrSessions.find(id);
+		if (itr != arrSessions.end())
+			return itr->second;
+		return nullptr;
+	}
+
 	/* 
 		Constructor 
 	*/
@@ -138,6 +150,15 @@ public:
 	*/
 	double GetCurrentSendAmount()    const{ return fl_uprate; }
 
+	/*
+	Acquires the session array lock.
+	CAUTION : Every lock acquire operation should be followed by ReleaseSessionLock.
+	Otherwise the program will be deadlocked!
+	*/
+	void AcquireSessionLock(){ sessionArrayLock.lock(); }
+	void ReleaseSessionLock(){ sessionArrayLock.unlock(); }
+	SessionMap & GetSessionMap(){ return arrSessions; }
+
 private:
 
 
@@ -151,6 +172,9 @@ private:
 		The listening port.
 	*/
 	unsigned __int16 m_sPort;
+
+	ConcurrentStack<unsigned __int16> ClientID;
+
 
 	/* 
 		The timer(s) used to check the socket keep alive and update internal server stats.
@@ -271,6 +295,8 @@ fl_downrate(0.0), fl_uprate(0.0)
 		printf("	MAXIMUM_ALLOWED_CONNECTION	[%d]\n", MAXIMUM_ALLOWED_CONNECTION);
 	#endif
 	#pragma endregion
+	/* Initialize client id stack */
+	for (int i = 65534; i > 0; i--){ ClientID.push(i); }
 
 	StartAccepting();
 	/*
@@ -357,11 +383,13 @@ void Server<T>::OnSessionConnect(boost::shared_ptr<T> new_connection, const boos
 		printf("> session_connect  \n	failed.\n<\n");
 	else
 	{
+		/* Set session ID */
+		((boost::shared_ptr<Session>)new_connection)->SetSessionID(ClientID.pop());
 		/* Initialize the new connection */
-		new_connection->Initialize();
+		((boost::shared_ptr<Session>)new_connection)->Initialize();
 		printf("> session_connect  \n	(S) ip : %s, port : %hu \n	(R) ip : %s, port : %hu, sid : %llu \n<\n", new_connection->GetLocalIPAddress().c_str(), new_connection->GetLocalPort(), new_connection->GetRemoteIPAddress().c_str(), new_connection->GetRemotePort(), new_connection->GetSessionID());
 		/* Inform session that it's connected properly */
-		new_connection->OnConnect();
+		((boost::shared_ptr<Session>)new_connection)->OnConnect();
 		{
 			/* Acquire the session map mutex */
 			boost::recursive_mutex::scoped_lock lock(sessionArrayLock);
@@ -399,7 +427,9 @@ void Server<T>::OnSessionDisconnect(boost::shared_ptr<T> dConnection)
 			Otherwise, either it's deleted before or never existed.
 			(both cases should not occur normally)
 			*/
+
 			arrSessions.erase(dConnection->GetSessionID());
+			ClientID.push(dConnection->GetSessionID());
 		}
 		else
 			printf("> session_disconnect \n	(R) ip : %s, port : %hu, sid %llu\n	failed,key does not exist.\n<\n", dConnection->GetRemoteIPAddress().c_str(), dConnection->GetRemotePort(), dConnection->GetSessionID());
