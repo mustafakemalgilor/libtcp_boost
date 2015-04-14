@@ -39,7 +39,7 @@ bool KOSession::DecryptData(unsigned char *in_stream,size_t m_remaining, Packet 
 	
 	if (isCryptoEnabled())
 	{
-		bool decryptState = m_crypto.JvDecryptionWithCRC32(m_remaining, in_stream, in_stream) > -1;
+		bool decryptState = m_crypto.JvDecryptionWithCRC32((int)m_remaining, in_stream, in_stream) > -1;
 		if (m_remaining < 4 || !decryptState || ++m_sequence != *(uint32 *)(in_stream)) return false;
 
 		m_remaining -= 8; // remove the sequence ID & CRC checksum

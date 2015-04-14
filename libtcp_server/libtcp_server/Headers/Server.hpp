@@ -36,6 +36,11 @@ Last rev.	: 14/03/2015
 	#include "../Misc/MemUsage.h"
 #endif
 
+#if MAXIMUM_ALLOWED_CONNECTION > 0
+	#include <boost/interprocess/sync/interprocess_semaphore.hpp>
+#endif
+
+
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -173,6 +178,10 @@ private:
 	*/
 	unsigned __int16 m_sPort;
 
+	#if MAXIMUM_ALLOWED_CONNECTION > 0
+		boost::interprocess::interprocess_semaphore s_maxConnectionEnforcer;
+	#endif
+
 	ConcurrentStack<unsigned __int16> ClientID;
 
 
@@ -281,7 +290,7 @@ t_keepalive(io_service_pool_.get_io_service()),
 t_statupdate(io_service_pool_.get_io_service()),
 m_sPort(sPort),
 ul_recvtime(0), ul_sendtime(0),
-fl_downrate(0.0), fl_uprate(0.0)
+fl_downrate(0.0), fl_uprate(0.0), s_maxConnectionEnforcer(MAXIMUM_ALLOWED_CONNECTION)
 
 #pragma endregion
 {
@@ -378,6 +387,8 @@ void Server<T>::OnSessionConnect(boost::shared_ptr<T> new_connection, const boos
 	when this function goes out of the scope
 	as the last reference exist in this function).
 	*/
+
+
 	if (error)
 		/* TODO : Determine the error and print a detailed output message to log file. */
 		printf("> session_connect  \n	failed.\n<\n");
@@ -407,6 +418,9 @@ void Server<T>::OnSessionConnect(boost::shared_ptr<T> new_connection, const boos
 
 	}
 
+	#if MAXIMUM_ALLOWED_CONNECTION > 0
+		s_maxConnectionEnforcer.wait();
+	#endif
 	/* Re-invoke accept operation */
 	StartAccepting();
 }
@@ -418,7 +432,9 @@ void Server<T>::OnSessionDisconnect(boost::shared_ptr<T> dConnection)
 	{
 		/* Acquire the session map mutex (as it can occur concurrently) */
 		boost::recursive_mutex::scoped_lock lock(sessionArrayLock);
-
+		#if MAXIMUM_ALLOWED_CONNECTION > 0
+			s_maxConnectionEnforcer.post();
+		#endif
 		/* Check if we have a session exist with that session key in the session map */
 		if (arrSessions.find(dConnection->GetSessionID()) != arrSessions.end())
 		{
@@ -429,7 +445,7 @@ void Server<T>::OnSessionDisconnect(boost::shared_ptr<T> dConnection)
 			*/
 
 			arrSessions.erase(dConnection->GetSessionID());
-			ClientID.push(dConnection->GetSessionID());
+			ClientID.push((unsigned short)dConnection->GetSessionID());
 		}
 		else
 			printf("> session_disconnect \n	(R) ip : %s, port : %hu, sid %llu\n	failed,key does not exist.\n<\n", dConnection->GetRemoteIPAddress().c_str(), dConnection->GetRemotePort(), dConnection->GetSessionID());

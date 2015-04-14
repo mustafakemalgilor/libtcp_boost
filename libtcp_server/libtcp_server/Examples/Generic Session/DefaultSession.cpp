@@ -7,15 +7,8 @@ DefaultSession::DefaultSession(boost::asio::io_service& io_service, void * srv) 
 }
 
 
-DefaultSession::~DefaultSession()
-{
-}
+DefaultSession::~DefaultSession()							{}
 
-void DefaultSession::OnDataReceived(char * buf, size_t len)
-{
-	// printf("data received..\n");
-}
-
-
-void DefaultSession::OnConnected()    {}
-void DefaultSession::OnDisconnected() {}
+void DefaultSession::OnDataReceived(char * buf, size_t len)	{}
+void DefaultSession::OnConnected()							{}
+void DefaultSession::OnDisconnected()						{}
