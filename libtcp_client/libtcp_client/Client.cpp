@@ -14,7 +14,9 @@ std::string ReplaceString(std::string subject, const std::string& search, const 
 
 
 
-Client::~Client()	{}
+Client::~Client()
+{
+}
 
 void Client::Initialize()
 {
@@ -205,7 +207,7 @@ void Client::DispatchParse(size_t rSize)
 
 	unsigned char first_chunk[6];
 	unsigned char head[2], tail[2], tmpSize[4];
-	char core[MAX_INDIVIDUAL_PACKET_SIZE];
+	unsigned char core[MAX_INDIVIDUAL_PACKET_SIZE];
 
 	int size = 0;
 
@@ -243,8 +245,10 @@ void Client::DispatchParse(size_t rSize)
 			m_readBuffer.Read((char*)tail, 2);
 
 			if (memcmp(tail, (unsigned char*)(TAIL), 2) == 0)
-				OnDataReceived(&core[0], size);
-
+			{
+				// Valid packet.
+				// TO-DO : Process it.
+			} // EOF tail check
 		} // EOF size > 0
 		else
 		{
@@ -264,7 +268,7 @@ void Client::DispatchParse(size_t rSize)
 	}
 	else
 	{
-		printf("< client_dispatchparse\n	Header mismatch.\n	Value : [%x,%x]\n>\n", head[0], head[1]);
+		printf("header mismatch.%x,%x\n", head[0], head[1]);
 		Disconnect();
 	}
 }

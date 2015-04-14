@@ -29,8 +29,6 @@ using boost::asio::ip::tcp;
 
 #define INTERNAL_SEND_BUFFER_SIZE 16384
 #define INTERNAL_RECV_BUFFER_SIZE 16384
-#define DEFAULT_RECONNECT_ATTEMPT 0
-#define DEFAULT_RECONNECT_INTERVAL 5000
 
 #if defined TEST_MODE
 	#define FLOOD_PACKET_SIZE 16384
@@ -43,15 +41,29 @@ class Client : public boost::enable_shared_from_this<Client>
 public:
 	typedef boost::shared_ptr<Client> pointer;
 	~Client();
+	static pointer create(boost::asio::io_service& io_service, void * mgr,std::string& ip,std::string& sPort,bool connectImmediately = true,int reconnectAttempt = 0, int reconnectInterval = 5000)
+	{
+		pointer ptr = pointer(new Client(io_service));
+		ptr->m_readBuffer.Allocate(RECV_BUFFER_SIZE);
+		ptr->m_readBuffer.Remove(RECV_BUFFER_SIZE);
+		ptr->mgrPtr = mgr;
+		ptr->m_ulSessionID = 0;
+		ptr->szServerIP = ip;
+		ptr->serverp_ = sPort;
+		ptr->isDisconnected = true;
+		ptr->reconnectAttempt = reconnectAttempt;
+		ptr->reconnectInterval = reconnectInterval;
+		
+		if (connectImmediately)
+			ptr->Connect();
+		return ptr;
+	}
 
 	void Connect();
 	void OnConnect(const boost::system::error_code& err,tcp::resolver::iterator endpoint_iterator);
 	void Disconnect();
 	void Initialize();
 
-	virtual void OnDataReceived(char *, size_t) = 0;
-	virtual void OnConnected() = 0;
-	virtual void OnDisconnected() = 0;
 
 	/* Returns client's IP address */
 	std::string GetLocalIPAddress() const { return local_; }
@@ -63,32 +75,13 @@ public:
 	unsigned short GetRemotePort() const { return remotep_; }
 	unsigned long long GetSessionID() const { return m_ulSessionID; }
 	tcp::socket& socket() { return socket_; }
-	void * Manager() const { return mgrPtr; }
-protected:
-	Client
-	(
-		boost::asio::io_service& io_service, 
-		void * mgr, 
-		std::string& ip, 
-		std::string& sPort, 
-		int ra = DEFAULT_RECONNECT_ATTEMPT, 
-		int ri = DEFAULT_RECONNECT_INTERVAL
-	)	: socket_(io_service), resolver_(io_service), t_flood(io_service), 
-		  t_reconnect(io_service),mgrPtr(mgr), m_ulSessionID(0), szServerIP(ip), 
-		  serverp_(sPort), isDisconnected(true), reconnectAttempt(ra), reconnectInterval(ri)
-	
-	{
-		m_readBuffer.Allocate(RECV_BUFFER_SIZE);
-		m_readBuffer.Remove(RECV_BUFFER_SIZE);
-	}
-
+	void * Manager(){ return mgrPtr; }
 private:
 	/*
 		Socket.
 	*/
-	tcp::resolver resolver_;
 	tcp::socket socket_;
-	
+	tcp::resolver resolver_;
 	boost::asio::deadline_timer t_flood , t_reconnect;
 
 	boost::atomic<int> reconnectAttempt;
@@ -124,7 +117,9 @@ private:
 	/* Ring buffer for read operation */
 	CircularBuffer m_readBuffer;
 
-
+	/* Constructor */
+	Client(boost::asio::io_service& io_service) : socket_(io_service),resolver_(io_service),t_flood(io_service),t_reconnect(io_service) {}
+	Client();
 
 	void OnResolve(const boost::system::error_code& err, tcp::resolver::iterator endpoint_iterator);
 	/* Invoked when an asynchronous write operation is completed */
