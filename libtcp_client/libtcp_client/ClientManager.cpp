@@ -1,5 +1,5 @@
 #include "ClientManager.hpp"
-
+#include "DefaultClient.hpp"
 
 ClientManager::ClientManager() : io_service_pool_(8)
 {
@@ -27,7 +27,9 @@ void ClientManager::SpawnNewClient(std::string &ip, std::string& port, int recon
 	{
 		/* Acquire the session map mutex (as it can occur concurrently) */
 		boost::recursive_mutex::scoped_lock lock(clientArrayLock);
-		Client::pointer new_client = Client::create(io_service_pool_.get_io_service(), this, ip, port, true, reconnectAttempt, reconnectInterval);
+		DefaultClient::pointer new_client = DefaultClient::create(io_service_pool_.get_io_service(), this, ip, port, reconnectAttempt, reconnectInterval);
+		new_client->Connect();
+
 		arrClients.insert(std::make_pair(new_client->GetSessionID(), new_client));
 	}
 }
